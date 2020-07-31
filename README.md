@@ -17,4 +17,6 @@ Some notable features include:
 
 * Easily closable popup for project information
 
-* Data based approach, with the various parts of each projects being stored in lists to be implemented in code
+* Data based approach, with the various parts of each projects being stored in lists to be implemented in code. 
+
+* Custom link detection
