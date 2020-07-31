@@ -5,6 +5,8 @@ A portfolio I made in Vue and uploaded to Github Pages showcasing the projects I
 
 Some notable features include: 
 
+* Image compression if necessary 
+
 * Highlighted code segments
 
 * Sorting feature for projects with multiple selections
