@@ -1,0 +1,49 @@
+<div class="sidebar">
+  <div class="overlay" @click="onRemove" />
+  <transition name="slide">
+    <div class="popup" v-bind:key="title">
+      <slot>
+        <div v-bind:style="{ display: 'flex' }">
+          <h2 class="title">{{ title }}</h2>
+          <h2 class="close" @click="onRemove">&times;</h2>
+        </div>
+        <a target="_blank" :href="img">
+          <img class="imageConstrained" :src="img" />
+        </a>
+        <h3 v-for="line in text" v-bind:key="line" v-html="urlify(line)" />
+
+        <div v-for="(parts, index) in code" v-bind:key="'parts' + index">
+          <div class="codeDescriptions">
+            <!--<code
+              v-for="(codePart, index2) in parts.codeSnippet.split('\n')"
+              v-bind:key="'part' + index + 'code' + index2"
+            >
+              <div
+                v-bind:style="{
+                  background: index2 % 2 == 0 ? '#EBF5FBBB' : '#EBF5FBDD',
+                  'padding-left': '1%',
+                }"
+                v-if="codePart != ''"
+              >
+                {{ toSpaces(codePart) }}
+                <br />
+              </div>
+            </code>-->
+
+            <pre
+              v-highlightjs
+            ><code v-bind:class="parts.language">{{ parts.codeSnippet }}</code></pre>
+          </div>
+
+          <div class="codeDescriptions">
+            <h4 v-bind:style="{ color: 'black' }">
+              {{ parts.codeDescription }}
+            </h4>
+          </div>
+        </div>
+        <h2>Topics:</h2>
+        <h4 v-for="topic in topics" v-bind:key="topic" v-html="topic" />
+      </slot>
+    </div>
+  </transition>
+</div>

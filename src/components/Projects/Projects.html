@@ -1,0 +1,39 @@
+<div>
+  <h2>Filter Projects</h2>
+  <multiselect
+    v-model="selected"
+    :options="topics"
+    :multiple="true"
+    :showLabels="false"
+  ></multiselect>
+
+  <div class="grid-container">
+    <div
+      v-for="project in filterProjects(projects, selected)"
+      v-bind:key="project.id"
+      v-on:click="popupProject(project)"
+    >
+      <div class="unit" data-aos="fade-up">
+        <div class="dot" />
+
+        <h1 v-bind:class="{ 'margin-bottom': '50vw' }">
+          {{ project.title }}
+        </h1>
+        <div class="label" />
+
+        <br />
+        <img :src="project.img" alt />
+      </div>
+    </div>
+  </div>
+
+  <Popup
+    v-if="PopupData"
+    v-bind:title="PopupData.title"
+    v-bind:text="PopupData.text"
+    v-bind:img="PopupData.img"
+    v-bind:onRemove="PopupData.onRemove"
+    v-bind:topics="PopupData.topics"
+    v-bind:code="PopupData.code"
+  />
+</div>
