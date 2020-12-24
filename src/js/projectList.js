@@ -2,6 +2,8 @@ export const topics = [
   "Python",
   "Javascript",
   "Processing/Java",
+  "Typescript",
+  "Fullstack",
   "Web Design",
   "Design",
   "Database Management",
@@ -13,14 +15,140 @@ export const topics = [
   "API Calling",
   "Physics",
   "React",
+  "React Native",
   "Flask",
   "Vue",
-  "Django",
+  "Firebase",
+  "MongoDB",
   "SQL",
+  "Django",
 ];
 const github = "Github link with more details";
 const heroku = "Link to project in action";
+const video = "Video demo";
 const projects = [
+  {
+    title: "Clean Connect",
+    img: require("../assets/CleanConnect.png"),
+    topics: [
+      "Javascript",
+      "Web Design",
+      "Database Management",
+      "Object Oriented",
+      "API Calling",
+      "React",
+      "Fullstack",
+      "MongoDB",
+    ],
+    text: [
+      "Cooperative business idea to solve problem of issues not being fixed in a timely manner at locations such as restrooms. Uses tag based system utilizing qr codes to report issues. Backend coded in Node.js with Typescript and Mongodb. Individually coded frontend coded in React.",
+      github + "https://github.com/JakeTrock/CleanConnect",
+      video + "https://cleanconnect.us/images/JakeCleanConn.mp4",
+    ],
+    code: [
+      {
+        language: "javascript",
+        codeSnippet: `//create grids then unit containers
+import React, { Component } from "react";
+import _ from "lodash";
+
+class Grid extends Component {
+  componentDidMount() {
+    if (this.props.emptyBehavior) // binds this so empty behavior has parent functionality
+      this.emptyBehavior = this.props.emptyBehavior.bind(this);
+  }
+  render() {
+    let { items, idLocation, customBehavior, emptyBehavior } = this.props;
+    items = _.chunk(items, 2); // splits items up into groups of 2
+    return (
+      <React.Fragment>
+        {items.map(function (list, i) {
+          return (
+            <div className="row" key={i}>
+              {list.map(function (item) {
+                if (item.name) // if item has a name then it has properties to be displayed
+                  return (
+                    <React.Fragment key={item[idLocation]}>
+                      {customBehavior(item)}
+                    </React.Fragment>
+                  );
+                else if (emptyBehavior) { // if an item has behavior when empty display said behavior
+                  return (
+                    <React.Fragment key="empty">
+                      {emptyBehavior()}
+                    </React.Fragment>
+                  );
+                } else return ""; // else don't display anything
+              })}
+            </div>
+          );
+        })}
+      </React.Fragment>
+    );
+  }
+}
+
+export default Grid;`,
+        codeDescription: `This is the code for the grid which is used for multiple things, for example showcasing all the tags a person has.
+        A grid displays multiple children which are given to it by it's parent. 
+        There is the potential for multiple behaviors, with an example for behavior being a tag either displaying it's information or a plus sign to create a new tag.
+        Object oriented design concepts were used for reusability and readability.
+        `,
+      },
+      {
+        language: "javascript",
+        codeSnippet: `export const ButtonPagination = ({
+  itemsCount,
+  pageSize,
+  currentPage,
+  onPageChange,
+}) => {
+  const pagesCount = Math.ceil(itemsCount / pageSize);
+  if (pagesCount === 1) return null;
+  const pages = _.range(1, pagesCount + 1);
+
+  return (
+    <nav>
+      <ul className="pagination justify-content-center">
+        {pages.map((page) => (
+          <li
+            key={page}
+            className={page === currentPage ? "page-item active" : "page-item"}
+          >
+            <div
+              className="page-link"
+              style={{ marginLeft: "auto" }}
+              onClick={() => onPageChange(page)}
+            >
+              {page}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};`,
+        codeDescription: `Pagination was necessary for multiple parts of the program, with the highlighted code showing a way to swap between pages using a button. 
+Lodash was used to filter the objects so only specific ones based on the page showed up and bootstrap was used for styling the button.`,
+      },
+      {
+        language: "javascript",
+        codeSnippet: `
+export function deleteInfo() {
+  //initial step of deleting account
+  return endpointTemplate({
+    type: "delete",
+    path: apiEndpoint + "/deleteinfo",
+    headers,
+    tryCatch: true,
+  });
+}`,
+        codeDescription: `Code for one of the many middleware calls, specifically for deleting an user account. 
+Most of the work is abstracted for visibility. Each call needs a type, a path for the call, headers for authentication and body type, as well as an optional tryCatch surrounder depending on whether or not you want to display errors.
+Axios was used for the middleware.`,
+      },
+    ],
+  },
   {
     title: "Weather Predictor",
     img: require("../assets/Weather.png"),
@@ -35,7 +163,7 @@ const projects = [
       "React",
     ],
     text: [
-      "A cumulative machine learning and web design project based around weather. A linear regression algorithm that also uses data mapping and scaling is used to predict temperature. A neural network is used to predict weather condition, having the ability to be trained with frontend user given info. Machine learning algorithms were made with knowledge gained from Andrew Ng's Coursera series. ",
+      "A cumulative machine learning and web design project based around weather. A linear regression algorithm with data mapping and scaling is used to predict temperature. A neural network is used to predict weather condition, having the ability to be trained with frontend user given info. Machine learning algorithms were made with knowledge gained from Andrew Ng's Coursera series. ",
       github + "https://github.com/JustinWeintraub/weather",
       heroku + "https://weintraub-weather.herokuapp.com/",
     ],
@@ -157,6 +285,151 @@ response = requests.post(
     ],
   },
   {
+    title: "Kirby Tracker",
+    img: require("../assets/KirbyTracker.gif"),
+    topics: [
+      "React",
+      "React Native",
+      "Mobile Development",
+      "Fullstack",
+      "Typescript",
+      "Javascript",
+      "Object Oriented",
+      "Design",
+      "API Calling",
+      "Firebase",
+    ],
+    text: [
+      "A React Native/Firebase project. Companion tool for playing Kirby video games, keeping track of your progress and giving tips to get all the collectables in the games listed. Utilizes typescript. Utilizes web scraping to get the data for each game, including information about every treasure in said game. Uses recursion to keep track of completed levels for each user.",
+      github + "https://github.com/JustinWeintraub/Kirby-Tracker",
+    ],
+    code: [
+      {
+        language: "typescript",
+        codeSnippet: `export async function updateChildren({
+  currentName,
+  value,
+  childNames,
+  selected,
+}: ChildrenProps) {
+  //recursive function that aggregates selected of current and children, going off of a name based system
+  //starts at layer of updater, ie current
+  await AsyncStorage.setItem(currentName + " selected", value.toString());
+  selected[currentName] = value;
+
+  if (childNames.constructor == Object) { // has children
+    for (let childName of Object.keys(childNames)) {
+      await updateChildren({
+        currentName: currentName + " " + childName,
+        value,
+        childNames: childNames[childName],
+        selected,
+      });
+    }
+    return selected;
+  } else return selected;
+}`,
+        codeDescription: `Here is an example of the recursion used for the selection system with for example the levels and the level collectables. 
+The case of updating the children is simpler than the other way around, with all that's necessary is passing down the selected value into each child and updating.
+In the case of updating parents it goes to highest parent layer, recursively checking if each child is selected and updating each parent layer accordingly.`,
+      },
+      {
+        language: "typescript",
+        codeSnippet: `import React from "react";
+import { View, ViewStyle, Text, StyleSheet } from "react-native";
+
+export default function AppText(props: TextProps) {
+  const { propStyles, style, text } = props;
+  return (
+    <View style={style}>
+      <Text
+        style={propStyles.map((exStyle: string) => {
+          return styles[exStyle];
+        })}
+      >
+        {text}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create<StyleProps>({
+  /* ... */ 
+  white: {
+    color: "white",
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowColor: "black",
+    textShadowRadius: 3,
+  },
+  /* ... */
+});
+
+interface StyleProps {
+  [key: string]: ViewStyle;
+}
+interface TextProps {
+  propStyles: Array<string>;
+  style?: ViewStyle;
+  text: string;
+}
+
+`,
+        codeDescription: `This code is meant to highlight my knowledge in typescript and react native. 
+This component was used to display all the text in the app, each coming with custom styles and properties. 
+PropStyles were specific for the text while Style was for the container of said text.`,
+      },
+      {
+        language: "javascript",
+        codeSnippet: `exports.getGame = functions.https.onRequest(async (req, res) => {
+  // Grab the text parameter.
+  const game = req.query.game;
+  const validGames = [
+      "Kirby Planet Robobot",
+      "Kirby Triple Deluxe",
+      "Kirby Star Allies",
+  ];
+  if (!validGames.includes(game))
+      return res.json(gameError);
+  const db = admin.firestore();
+  const ref = db.collection("gameData").doc(game);
+  ref
+      .get()
+      .then((doc) => {
+      const data = doc.data();
+      if (data)
+          return res.json({ data });
+      else {
+          const ref2 = db.collection("Collectables").doc(game);
+          ref2
+              .get()
+              .then((doc2) => {
+              const dataToScrape = doc2.data()["Stages"];
+              const scrapeFunction = game === "Kirby Star Allies" ? starAlliesScrape : scrape;
+              scrapeFunction(dataToScrape).then((scrapedData) => {
+                  admin
+                      .firestore()
+                      .collection("gameData")
+                      .doc(game)
+                      .set({ storedData: scrapedData });
+              });
+              return res.json({ success: true, response: "Game data stored." });
+          })
+              .catch(() => {
+              return res.json(genericError);
+          });
+      }
+  })
+      .catch(() => {
+      return res.json(genericError);
+  });
+});`,
+        codeDescription: `This code highlights one of my custom api functions in firebase for getting a game's data. 
+If the game's data doesn't exist then it populates it using my scraper, but if it does it returns the data for the game. 
+If anything breaks an error is given to tell the user that a problem occurred.`,
+      },
+    ],
+  },
+  {
     title: "Pokemon Battle",
     img: require("../assets/Pokemon.gif"),
     topics: [
@@ -240,6 +513,7 @@ for(int i=0; i<1; i++){
       "Database Management",
       "API Calling",
       "SQL",
+      "Fullstack",
     ],
     text: [
       "Database management and web development was utilized to display custom home pages with the ability to save the front pages from multiple dates. Used multiple programming languages.",
@@ -318,7 +592,13 @@ cursor = connection.cursor(buffered=True)
   {
     title: "Blog & Chat",
     img: require("../assets/Django.png"),
-    topics: ["Python", "Django", "Web Design", "Database Management"],
+    topics: [
+      "Python",
+      "Django",
+      "Web Design",
+      "Database Management",
+      "Fullstack",
+    ],
     text: [
       "Used web design to create a website that acted as a blog and a chatroom, including posting and commenting functionality. Partly done by following along with a tutorial series, with functionality like the chatroom and commenting being done entirely by me. Database stored in AWS.",
       github + "https://github.com/JustinWeintraub/blog",
@@ -431,6 +711,7 @@ To do that I randomly assigned which columns of flow field would get displayed a
       "Web Design",
       "Database Management",
       "Object Oriented",
+      "Fullstack",
     ],
     text: [
       "Used my skills in web design to display a movie database with authentication and database management. Done by following along with a tutorial series, testing my skills in it's various coding challenges, as a way to learn React.",
