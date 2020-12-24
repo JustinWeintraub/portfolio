@@ -25,7 +25,9 @@ h2 {
 img {
   width: 95%;
   height: auto;
+  max-height: 450px;
 }
+
 .grid-container {
   width: 99%;
   height: auto;

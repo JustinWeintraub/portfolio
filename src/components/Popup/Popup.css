@@ -68,7 +68,7 @@ code {
 .imageConstrained {
   width: 90%;
   max-width: 400px;
-  max-height: 350px;
+  max-height: 650px;
 }
 
 .codeDescriptions {
