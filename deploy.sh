@@ -16,7 +16,8 @@ git init
 git add -A
 git commit -m 'Deploying portfolio'
 
-git push -f git@github.com:JustinWeintraub.github.io.git master
+git remote add origin https://github.com/JustinWeintraub/JustinWeintraub.github.io
+git push origin master --force
 
 cd -
 

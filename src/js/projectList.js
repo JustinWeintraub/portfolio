@@ -14,6 +14,7 @@ export const topics = [
   "Data Cleanup",
   "API Calling",
   "Physics",
+  "Mobile Development",
   "React",
   "React Native",
   "Flask",

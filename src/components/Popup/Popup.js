@@ -19,7 +19,13 @@ export default {
       let url = text.match(urlRegex);
       if (url) {
         url = url[0];
-        return '<a href="' + url + '">' + text.replace(url, "") + "</a>";
+        return (
+          '<a target="_blank" href="' +
+          url +
+          '">' +
+          text.replace(url, "") +
+          "</a>"
+        );
       } else return text;
       /*return text.replace(urlRegex, function(url) {
         console.log(url);
