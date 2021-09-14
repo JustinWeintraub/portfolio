@@ -1,0 +1,37 @@
+$black: black;
+$white: #dddd;
+$strongWhite: #eeee;
+$primary: #0b3c5d;
+$secondary: #1d2731;
+$tertiary: #328cc1;
+$quaternary: #d9b310;
+
+html {
+  scroll-behavior: smooth;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: $white;
+  overflow-x: hidden;
+  position: relative;
+}
+body {
+  background-color: $primary;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+}
+.btn {
+  width: 30%;
+  font-size: 125%;
+  color: $black;
+  border: 0;
+  border-radius: 0;
+  height: auto;
+  text-align: center;
+  text-align-last: center;
+  margin-bottom: 1vh;
+}

@@ -1,7 +1,7 @@
 const CompressionPlugin = require("compression-webpack-plugin");
 module.exports = {
   configureWebpack: {
-    plugins: [
+    /*plugins: [
       new CompressionPlugin({
         filename: "[path].br[query]",
         algorithm: "brotliCompress",
@@ -11,6 +11,6 @@ module.exports = {
         minRatio: 0.8,
         deleteOriginalAssets: false,
       }),
-    ],
+    ],*/
   },
 };

@@ -1,43 +1,63 @@
 <div>
-  <div id="row" class="grid-container">
-    <div>
-      <!--<img class="gridImg" src="../assets/photo.jpeg" alt />-->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css"
+  />
+  <div class="homeContainer">
+    <img
+      class="backgroundImage"
+      src="../../assets/background.svg"
+      alt="background wave"
+    />
+    <div class="homeText">
       <h1>
-        <a href="https://github.com/Yoshterra1" class="blankLink">Github</a>
-        <img src="../../assets/github.svg" alt />
+        Hello! My name is Justin Weintraub, and this is my portfolio!
       </h1>
-      <h1>
-        <a
-          href="https://www.linkedin.com/in/justin-weintraub-4675921a9/"
-          class="blankLink"
-          >Linkedin</a
-        >
-        <img src="../../assets/linkedin.png" alt />
-      </h1>
-      <!--
-      <h1>
-        Resume
-        <img src="../assets/resume.png" alt />
-      </h1>
-      -->
-      <h1>
-        <a
-          href="mailto:justinweintraub1@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="blankLink"
-          >Email</a
-        >
-        <img src="../../assets/email.png" alt />
-      </h1>
+      <h3>
+        What you can find here is a collection of some of my projects as well as
+        information about me. <br />
+        I'm a Software Engineer working full stack in the fields of Web
+        Development and AI. I'm also currently a student at Worcester
+        Polytechnic Institute.<br />
+        <!--My primary languages are JavaScript, Python and Java and my primary stack is MEVN.-->
+      </h3>
     </div>
-    <h3 class="gridText">
-      Hello! My name is Justin Weintraub, and this is my portfolio!
-      <br />What you can find here is a collection of some of my projects as
-      well as information about me. <br /> 
-      I'm a Software Engineer working full stack in the fields of Web Development and AI. 
-      I'm also currently a student at Worcester Polytechnic Institute.<br />
-      My primary languages are JavaScript, Python and Java and my primary stack is MEVN. 
-    </h3>
+  </div>
+  <br />
+  <div id="skills" class="knowledgeContainer">
+    <h1>
+      Skills
+    </h1>
+    <div class="row">
+      <i class="devicon-javascript-plain" @click="redirect(['Javascript'])" />
+      <i class="devicon-typescript-plain" @click="redirect(['Typescript'])" />
+      <i class="devicon-python-plain" @click="redirect(['Python'])" />
+      <i class="devicon-dart-plain" @click="redirect(['Flutter/Dart'])" />
+      <i class="devicon-java-plain" @click="redirect(['Processing/Java'])" />
+    </div>
+    <br />
+    <div class="row">
+      <i class="devicon-nodejs-plain" @click="redirect(['NodeJS'])" />
+      <i class="devicon-vuejs-plain" @click="redirect(['Vue'])" />
+      <i
+        class="devicon-react-plain"
+        @click="redirect(['React', 'React Native'])"
+      />
+      <i class="devicon-flask-plain" @click="redirect(['Flask'])" />
+      <i class="devicon-django-plain" @click="redirect(['Django'])" />
+    </div>
+    <br />
+    <div class="row">
+      <i class="devicon-mongodb-plain" @click="redirect(['MongoDB'])" />
+      <i class="devicon-mysql-plain" @click="redirect(['SQL'])" />
+      <i
+        class="devicon-amazonwebservices-original"
+        @click="redirect(['AWS'])"
+      />
+      <!-- TODO new projects, manga rec and chess-->
+      <!-- TODO favicon-->
+      <i class="devicon-firebase-plain" @click="redirect(['Firebase'])" />
+    </div>
+    <Projects />
   </div>
 </div>

@@ -1,0 +1,54 @@
+@import "@/app.scss";
+
+a {
+  text-decoration: none;
+}
+h1 {
+  font-size: 2.25vw;
+  color: $strongWhite;
+}
+img {
+  width: 40%;
+  height: auto;
+  margin: auto;
+  vertical-align: -10%;
+  /*fill: $white;*/
+}
+.navContainer {
+  background: linear-gradient(to right, #22399d, #12356d) no-repeat; /* color of SVG */
+}
+.nav {
+  border-radius: 25px;
+  background-color: $secondary;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  z-index: 100;
+  width: 90vw;
+  top: 0;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.icons {
+  display: flex;
+  width: 20vw;
+}
+.center {
+  font-size: 3vw;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  border-left: solid $white;
+  border-right: solid $white;
+}
+
+@media screen and (min-width: 1500px) {
+  h1 {
+    font-size: 1.5vw;
+  }
+}

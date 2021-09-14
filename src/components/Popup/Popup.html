@@ -1,21 +1,33 @@
-<div class="sidebar">
+<div>
   <div class="overlay" @click="onRemove" />
   <transition name="slide">
     <div class="popup" v-bind:key="title">
-      <slot>
-        <div v-bind:style="{ display: 'flex' }">
-          <h2 class="title">{{ title }}</h2>
-          <h2 class="close" @click="onRemove">&times;</h2>
-        </div>
+      <h2 class="close" @click="onRemove">&times;</h2>
+      <div>
+        <h2 class="title">{{ title }}</h2>
         <a target="_blank" :href="img">
           <img class="imageConstrained" :src="img" />
         </a>
+        <br />
+        <br />
         <h3 v-for="line in text" v-bind:key="line" v-html="urlify(line)" />
-
-        <div v-for="(parts, index) in code" v-bind:key="'parts' + index">
-          <div class="codeDescriptions">
-            <!--<code
-              v-for="(codePart, index2) in parts.codeSnippet.split('\n')"
+      </div>
+      <div class="rightSection">
+        <div v-for="(codePart, index) in code" :key="'codePart' + index">
+          <button
+            type="button"
+            class="collapsible"
+            @click="()=>changeVisibility('collapsible ' + index)"
+          >
+            <div>
+              {{codePart.title ? codePart.title : 'Code Section' }}
+            </div>
+          </button>
+          <div :id="'collapsible ' + index " class="collapsibleData">
+            <br />
+            <div class="codeDescriptions">
+              <!--<code
+              v-for="(codePart, index2) in codePart.codeSnippet.split('\n')"
               v-bind:key="'part' + index + 'code' + index2"
             >
               <div
@@ -30,20 +42,33 @@
               </div>
             </code>-->
 
-            <pre
-              v-highlightjs
-            ><code v-bind:class="parts.language">{{ parts.codeSnippet }}</code></pre>
-          </div>
-
-          <div class="codeDescriptions">
-            <h4 v-bind:style="{ color: 'black' }">
-              {{ parts.codeDescription }}
-            </h4>
+              <pre
+                v-highlightjs
+              ><code v-bind:class="codePart.language">{{ codePart.codeSnippet }}</code></pre>
+            </div>
+            <br />
+            <div class="codeDescriptions">
+              <h4>
+                {{ codePart.codeDescription }}
+              </h4>
+            </div>
+            <br />
           </div>
         </div>
-        <h2>Topics:</h2>
-        <h4 v-for="topic in topics" v-bind:key="topic" v-html="topic" />
-      </slot>
+        <button
+          type="button"
+          class="collapsible"
+          @click="()=>changeVisibility('collapsible topics')"
+        >
+          <div>
+            Topics
+          </div>
+        </button>
+        <div :id="'collapsible topics'" class="collapsibleData">
+          <br />
+          <h4 v-for="topic in topics" v-bind:key="topic" v-html="topic" />
+        </div>
+      </div>
     </div>
   </transition>
 </div>

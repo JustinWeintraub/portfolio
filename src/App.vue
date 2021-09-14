@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view />
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -15,4 +17,4 @@ export default {
 };
 </script>
 
-<style src="./App.css" />
+<style src="./App.scss" lang="scss" />

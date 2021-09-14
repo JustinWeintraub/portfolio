@@ -1,7 +1,9 @@
-<div>
-  <h2>Filter Projects</h2>
+<div id="projects">
+  <h1 :style="{'font-size':'3vw'}">Projects</h1>
+  <h2 :style="{'font-size':'2.5vw'}"></h2>>Filter</h2>
   <multiselect
-    v-model="selected"
+    :value="selectedTopics"
+    @input="updateTopics"
     :options="topics"
     :multiple="true"
     :showLabels="false"
@@ -9,7 +11,7 @@
 
   <div class="grid-container">
     <div
-      v-for="project in filterProjects(projects, selected)"
+      v-for="project in filterProjects(projects, selectedTopics)"
       v-bind:key="project.id"
       v-on:click="popupProject(project)"
     >
@@ -20,9 +22,11 @@
           {{ project.title }}
         </h1>
         <div class="label" />
-
         <br />
-        <img :src="project.img" alt />
+        <div class="imageContainer">
+          <img :src="project.img" alt />
+        </div>
+        <br />
       </div>
     </div>
   </div>

@@ -1,0 +1,91 @@
+@import "@/app.scss";
+
+h1 {
+  font-size: 3vw;
+}
+h3 {
+  font-size: 2vw;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+i {
+  cursor: pointer;
+}
+br {
+  content: "";
+  display: block;
+  margin-bottom: 2vw;
+}
+
+.homeContainer {
+  width: 99vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.homeText {
+  width: 80%;
+}
+
+.knowledgeContainer {
+  margin-top: 7vw;
+}
+
+.backgroundImage {
+  position: absolute;
+  left: 0vw;
+  width: 120vw;
+  height: auto;
+  z-index: -1;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 5vw;
+}
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  h1 {
+    font-size: 15px;
+  }
+  .backgroundImage {
+    width: 115vw;
+  }
+}
+
+@media only screen and (max-width: 445px) {
+  h1 {
+    font-size: 13px;
+  }
+  h3 {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  h1 {
+    font-size: 10px;
+  }
+  h3 {
+    font-size: 6px;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  .backgroundImage {
+    width: 140vw;
+  }
+}

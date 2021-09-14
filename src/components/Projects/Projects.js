@@ -3,6 +3,7 @@ import { projects, topics } from "../../js/projectList";
 import Multiselect from "vue-multiselect";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { mapState } from "vuex";
 export default {
   name: "Projects",
   components: {
@@ -10,8 +11,11 @@ export default {
     Multiselect,
   },
   created() {
-    AOS.init({ offset: 100 });
+    AOS.init({ offset: -1 });
   },
+  computed: mapState({
+    selectedTopics: (state) => state.topics,
+  }),
   methods: {
     filterProjects(projects, selected) {
       let tempProjects = [];
@@ -39,9 +43,10 @@ export default {
       this.PopupData = null;
     },
     getPosition(id) {
-      const projectLength = this.filterProjects(this.projects, this.selected)
-        .length;
-      console.log(projectLength);
+      const projectLength = this.filterProjects(
+        this.projects,
+        this.selectedTopics
+      ).length;
       if (projectLength == 1) return "Middle";
       else if (id % 2 == 0) return "Right";
       else return "Left";
@@ -50,11 +55,13 @@ export default {
       this.PopupData = { ...project };
       this.PopupData["onRemove"] = () => this.removePopup();
     },
+    updateTopics(topics) {
+      this.$store.commit("changeTopics", topics);
+    },
   },
   data() {
     return {
       PopupData: null,
-      selected: [],
       topics: topics,
       projects: projects,
     };
