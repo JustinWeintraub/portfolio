@@ -39,7 +39,6 @@ export default {
       return text.replace(/ /g, "\xa0"); //replacing spaces with spaces html can read
     },
     changeVisibility(id) {
-      console.log(id);
       const element = document.getElementById(id);
       if (element.style.display === "block") {
         element.style.display = "none";
