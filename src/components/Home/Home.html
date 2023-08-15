@@ -4,11 +4,11 @@
     href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css"
   />
   <div class="homeContainer">
-    <img
+    <!-- <img
       class="backgroundImage"
       src="../../assets/background.svg"
       alt="background wave"
-    />
+    /> -->
     <div class="homeText">
       <h1>
         Hello! My name is Justin Weintraub, and this is my portfolio!
@@ -22,12 +22,12 @@
         <!--My primary languages are JavaScript, Python and Java and my primary stack is MEVN.-->
       </h3>
     </div>
+    <div class="divider"></div>
+    <img class="homeImage" src="../../assets/me.jpeg">
   </div>
-  <br />
-  <div id="skills" class="knowledgeContainer">
-    <h1>
-      Skills
-    </h1>
+  <!-- <br /> -->
+  <h1 id="skills" class="tab">Skills</h1>
+  <div class="knowledgeContainer">
     <div class="row">
       <i class="devicon-javascript-plain" @click="redirect(['Javascript'])" />
       <i class="devicon-typescript-plain" @click="redirect(['Typescript'])" />

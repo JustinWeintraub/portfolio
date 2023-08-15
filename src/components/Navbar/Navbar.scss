@@ -14,31 +14,31 @@ img {
   vertical-align: -10%;
   /*fill: $white;*/
 }
-.navContainer {
-  background: linear-gradient(to right, #22399d, #12356d) no-repeat; /* color of SVG */
-}
 .nav {
+  position: fixed;
   border-radius: 25px;
   background-color: $secondary;
   padding-top: 1%;
   padding-bottom: 1%;
   margin-left: 5vw;
   margin-right: 5vw;
-  z-index: 100;
+  z-index: 1;
   width: 90vw;
   top: 0;
+  height: 9vw;
 }
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-bottom: -10px;
 }
 .icons {
   display: flex;
   width: 20vw;
 }
 .center {
-  font-size: 3vw;
+  font-size: 2.75vw;
   margin-top: auto;
   margin-bottom: auto;
   padding-left: 2vw;
@@ -47,8 +47,3 @@ img {
   border-right: solid $white;
 }
 
-@media screen and (min-width: 1500px) {
-  h1 {
-    font-size: 1.5vw;
-  }
-}

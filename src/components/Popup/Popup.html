@@ -1,8 +1,8 @@
 <div>
+  <!-- <h2 class="close" @click="onRemove">&times;</h2> -->
   <div class="overlay" @click="onRemove" />
   <transition name="slide">
     <div class="popup" v-bind:key="title">
-      <h2 class="close" @click="onRemove">&times;</h2>
       <div>
         <h2 class="title">{{ title }}</h2>
         <a target="_blank" :href="img">
@@ -10,9 +10,8 @@
         </a>
         <br />
         <br />
-        <h3 v-for="line in text" v-bind:key="line" v-html="urlify(line)" />
+        <h3 class="constrainedText" v-for="line in text" v-bind:key="line" v-html="urlify(line)" />
       </div>
-      <div class="rightSection">
         <div v-for="(codePart, index) in code" :key="'codePart' + index">
           <button
             type="button"
@@ -26,21 +25,6 @@
           <div :id="'collapsible ' + index " class="collapsibleData">
             <br />
             <div class="codeDescriptions">
-              <!--<code
-              v-for="(codePart, index2) in codePart.codeSnippet.split('\n')"
-              v-bind:key="'part' + index + 'code' + index2"
-            >
-              <div
-                v-bind:style="{
-                  background: index2 % 2 == 0 ? '#EBF5FBBB' : '#EBF5FBDD',
-                  'padding-left': '1%',
-                }"
-                v-if="codePart != ''"
-              >
-                {{ toSpaces(codePart) }}
-                <br />
-              </div>
-            </code>-->
 
               <pre
                 v-highlightjs
@@ -68,7 +52,6 @@
           <br />
           <h4 v-for="topic in topics" v-bind:key="topic" v-html="topic" />
         </div>
-      </div>
     </div>
   </transition>
 </div>

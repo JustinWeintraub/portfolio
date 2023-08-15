@@ -3,18 +3,17 @@
 img {
   width: 100%;
 }
-
 h2 {
-  font-size: clamp(25px, 4.25vw, 75px);
+  font-size: clamp(15px, 4.25vw, 75px);
   margin: 0.2em;
 }
-h3 {
-  font-size: 2.25vw;
-  font-size: clamp(18px, 1.25vw, 30px);
+.collapsible{
+  font-size: clamp(15px, 2.25vw, 30px);
 }
-h4 {
-  font-size: clamp(18px, 1.25vw, 30px);
+h3,h4 {
+  font-size: clamp(10px, 1.25vw, 30px);
 }
+
 h4,
 h2,
 h3 {
@@ -47,33 +46,35 @@ br {
 }
 
 .popup {
-  overflow-y: scroll;
+  overflow: auto;
   background-color: $tertiary;
   position: fixed;
-  left: 2%;
-  top: 2%;
-  height: 96%;
-  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  z-index: 3;
   width: 96%;
-  overflow-wrap: break-word;
+  max-height: 90vh;
+  // overflow-wrap: break-word;
   box-sizing: border-box;
   border: 3px solid black;
-  color: #fff;
+  color: #333;
   padding: 1%;
-  display: flex;
+  display: block;
 }
 .popup > div {
   flex: 1;
 }
 .imageConstrained {
-  width: 90%;
-  max-width: 400px;
-  max-height: 650px;
+  width:auto;
+  max-width:60%;
+  max-height: 400px;
 }
 
 .codeDescriptions {
   margin: auto;
-  width: 40vw;
+  width: 80vw;
   word-wrap: break-word;
 }
 
@@ -84,19 +85,24 @@ br {
   width: 100%;
   height: 100%;
   background-color: #000000c7;
+  z-index: 2;
   cursor: pointer;
 }
 
 .close {
-  position: absolute;
-  margin-left: 95%;
+  position: fixed;
+  left:92.5%;
+  top:2.5%;
   cursor: pointer;
   color: $black;
+  z-index:4;
 }
 
 .title {
   margin-left: auto;
   margin-right: auto;
+  text-decoration-line: underline;  
+  color: $strongBlack;
 }
 .rightSection {
   margin-top: 5vw;
@@ -111,10 +117,13 @@ br {
   border: none;
   text-align: left;
   outline: none;
-  font-size: 20px;
 }
 .collapsibleData {
   display: none;
+}
+.constrainedText {
+  width: 60vw;
+  margin: auto
 }
 /*::-webkit-scrollbar {
   -webkit-appearance: none;

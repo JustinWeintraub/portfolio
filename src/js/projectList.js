@@ -4,6 +4,7 @@ export const topics = [
   "Processing/Java",
   "Typescript",
   "Flutter/Dart",
+  "AWS",
   "Fullstack",
   "Web Design",
   "Machine Learning",
@@ -20,7 +21,6 @@ export const topics = [
   "React Native",
   "Flask",
   "Vue",
-  "AWS",
   "Firebase",
   "MongoDB",
   "SQL",
@@ -262,7 +262,8 @@ def trainNeural():
   },
   {
     title: "MangaRec",
-    img: require("../assets/Mangarec.gif"),
+    img: require("../assets/Mangarec.jpg"),
+    gif: require("../assets/Mangarec.gif"),
     topics: [
       "Fullstack",
       "Mobile Development",
@@ -409,7 +410,8 @@ async function updateSingular(manga) {
   },
   {
     title: "Kirby Tracker",
-    img: require("../assets/KirbyTracker.gif"),
+    img: require("../assets/KirbyTracker.jpg"),
+    gif: require("../assets/KirbyTracker.gif"),
     topics: [
       "React",
       "React Native",
@@ -556,6 +558,179 @@ If anything breaks an error is given to tell the user that a problem occurred.`,
     ],
   },
   {
+    title: "Project Manager",
+    img: require("../assets/ProjectManager.jpg"),
+    topics: ["Javascript", "Processing/Java", "Fullstack", "Web Design", "Database Management", "API Calling", "AWS", "SQL"],
+    text: [
+      "This was a project done for my software engineering class in a team of 4, where we made a project management software using a Javascript Frontend and an AWS Lambda based backend using Java. For routing, we used Api Gateway. We used S3 to store the website. And for the database, we used RDS with MySQL. Our testing suite had 90% code coverage of our backend and the backend code followed object oriented design. This project is no longer functional due to us no longer paying for the AWS tools.",
+      github + "https://github.com/Suryanshg/ProjectManager",
+      heroku + "http://softengproject3733.s3-website.us-east-2.amazonaws.com/"
+    ],
+    code: [
+      { 
+        title: "Adding a Task to a Project",
+        language: "java",
+        codeSnippet: `public class TaskDAO {
+  java.sql.Connection conn;
+  TeammateTaskDAO ttDAO;
+
+  public TaskDAO() {
+    try {
+      conn = DatabaseUtil.connect();
+      ttDAO = new TeammateTaskDAO();
+    } catch (Exception e) {
+      e.printStackTrace();
+      conn = null;
+    }
+  }
+  public Boolean addTask(Task task, String parentTask, String projectid) throws Exception {
+    try {
+      String statement = String.format("SELECT * FROM Task WHERE title = ? AND parentTask %s ? AND Project %s ?;",
+          parentTask == null ? "IS" : "=", projectid == null ? "IS" : "=");
+      PreparedStatement ps = conn
+          .prepareStatement(statement);
+      ps.setString(1, task.title);
+      if (parentTask != null)
+        ps.setString(2, parentTask);
+      else
+        ps.setNull(2, Types.NULL);
+      if (projectid != null)
+        ps.setString(3, projectid);
+      else
+        ps.setNull(3, Types.NULL);
+
+      ResultSet resultSet = ps.executeQuery();
+      // If the task is already present then return false
+      // resultSet.getString("title");
+      while (resultSet.next()) {
+        resultSet.close();
+        return false;
+      }
+    } catch (Exception e) {
+    }
+    try {
+
+      // Setting up the outline number
+      String statement = String.format("SELECT count(*) AS count FROM Task WHERE parentTask %s ? AND Project %s ?;",
+          parentTask == null ? "IS" : "=", projectid == null ? "IS" : "=");
+      PreparedStatement ps = conn
+          .prepareStatement(statement);
+      if (parentTask != null)
+        ps.setString(1, parentTask);
+      else
+        ps.setNull(1, Types.NULL);
+      if (projectid != null)
+        ps.setString(2, projectid);
+      else
+        ps.setNull(2, Types.NULL);
+      ResultSet resultSet = ps.executeQuery();
+      while (resultSet.next()) {
+        task.outlineNumber = String.valueOf(resultSet.getInt("count") + 1);
+        resultSet.close();
+        break;
+      }
+
+      // Creating a new task
+      ps = conn.prepareStatement(
+          "INSERT INTO Task (id, title, completed, parentTask, Project, outlineNumber) values(?,?,?,?,?,?);",
+          Statement.RETURN_GENERATED_KEYS);
+      ps.setString(1, task.id.toString());
+      ps.setString(2, task.title);
+      ps.setBoolean(3, task.completed);
+      if (parentTask != null)
+        ps.setString(4, parentTask);
+      else
+        ps.setNull(4, Types.NULL);
+      if (projectid != null)
+        ps.setString(5, projectid);
+      else
+        ps.setNull(5, Types.NULL);
+      ps.setString(6, task.outlineNumber);
+      ps.execute();
+
+      return true;
+
+    } catch (Exception e) {
+      throw new Exception("Failed to insert task: " + e.getMessage());
+    }
+  }
+}`,
+      codeDescription: `
+      Through SQL queries, this code does the task of adding a task to a project.
+      It first checks to see if the tasks exists, and if so, returns false.
+      It then sets the outline number, or in other terms setting the task # for the project.
+      Lastly, a task object is created and is appended to the database.`
+      },
+      {
+        title: "Test Cases",
+        language: "java",
+        codeSnippet: `public class CreateTaskHandlerTest extends LambdaTest {
+
+  List<Task> testInput(String incoming, int outgoing) throws IOException {
+    CreateTaskHandler handler = new CreateTaskHandler();
+    CreateTaskRequest req = new Gson().fromJson(incoming, CreateTaskRequest.class);
+    CreateTaskResponse response = handler.handleRequest(req, createContext("create task"));
+    System.out.println(response.error);
+    assertEquals(outgoing, response.statusCode);
+    return response.task;
+  }
+
+  void deleteTask(String id) throws IOException {
+    TaskDAO dao = new TaskDAO();
+    Boolean result;
+    try {
+      result = dao.deleteTask(id);
+      assertEquals(result, true);
+    } catch (Exception e) {
+      assertEquals(false, true); // always fails
+    }
+  }
+
+  @Test
+  public void createTaskTestPasses() {
+    String title = "test139";
+    String projectid = "0bc22c80-a9d6-43a1-b1f2-7fba045eae0b";
+    String parentTask = null;
+    String SAMPLE_INPUT_STRING = "{"title": "" + title + "","projectid": "" + projectid
+        + "", "parentTask": " + parentTask + "}";
+    int RESULT = 200;
+
+    try {
+      List<Task> task = testInput(SAMPLE_INPUT_STRING, RESULT);
+      assertEquals(task.get(0).title, title);
+      deleteTask(task.get(0).id.toString());
+    } catch (IOException ioe) {
+      Assert.fail("invalid: " + ioe.getMessage());
+    }
+  }
+
+  @Test
+  public void createTaskTestFails() throws Exception {
+    // Let's create a Task with the same title and projectid in the DB
+    TaskDAO dao = new TaskDAO();
+    Task task = new Task("testFail");
+    dao.addTask(task, null, "0bc22c80-a9d6-43a1-b1f2-7fba045eae0b");
+
+    String SAMPLE_INPUT_STRING = "{"title": "testFail","projectid": "0bc22c80-a9d6-43a1-b1f2-7fba045eae0b"}";
+    int RESULT = 422;
+
+    try {
+      testInput(SAMPLE_INPUT_STRING, RESULT);
+      dao.deleteTask(task.id.toString());
+    } catch (IOException ioe) {
+      Assert.fail("invalid: " + ioe.getMessage());
+    }
+  } ...`,
+      codeDescription: `
+      This code is an example of some the testing we do, specifically for the functionality of creating a task.
+      I've shown off two of the tests done, one where a task creation fails and one where it succeeds.
+      In the first scenario, the test succeeds because the task wasn't made in the database, but in the second it fails because the task was already made.
+      We test to see if we get the correct succeed/fail message.
+      `
+      }
+    ]
+  },
+  {
     title: "Game Visualization",
     img: require("../assets/GameVisualization.png"),
     topics: ["Python", "Visualization", "Data Cleanup", "API Calling"],
@@ -610,7 +785,8 @@ response = requests.post(
 
   {
     title: "Pokemon Battle",
-    img: require("../assets/Pokemon.gif"),
+    img: require("../assets/Pokemon.jpg"),
+    gif: require("../assets/Pokemon.gif"),
     topics: [
       "Processing/Java",
       "Games/Simulations",
@@ -826,7 +1002,8 @@ class Profile(models.Model):
   },
   {
     title: "Fished",
-    img: require("../assets/Fished.gif"),
+    img: require("../assets/Fished.jpg"),
+    gif: require("../assets/Fished.gif"),
     topics: ["Processing/Java", "Games/Simulations", "Physics"],
     text: [
       "A simulation for birds, fish, and puffer fish. The birds try to eat the fish and the puffer fish eat them all. Used physics concepts such as forces and velocity to create flow fields, a seeking algorithm, pack based movement, and more.",
