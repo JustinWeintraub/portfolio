@@ -1,18 +1,20 @@
 <div>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.13.0/devicon.min.css" />
   <div class="homeContainer">
     <!-- <img
       class="backgroundImage"
       src="../../assets/background.svg"
       alt="background wave"
     /> -->
+    <div class="homeImageContainer">
+      <img class="homeImage" src="../../assets/me.png">
+    </div>
+    <!-- <div class="divider"></div> -->
     <div class="homeText">
       <h1>
         Hello! My name is Justin Weintraub, and this is my portfolio!
       </h1>
+      <hr>
       <h3>
         What you can find here is a collection of some of my projects as well as
         information about me. <br />
@@ -22,41 +24,74 @@
         <!--My primary languages are JavaScript, Python and Java and my primary stack is MEVN.-->
       </h3>
     </div>
-    <div class="divider"></div>
-    <img class="homeImage" src="../../assets/me.jpeg">
+
   </div>
   <!-- <br /> -->
   <h1 id="skills" class="tab">Skills</h1>
   <div class="knowledgeContainer">
     <div class="row">
-      <i class="devicon-javascript-plain" @click="redirect(['Javascript'])" />
-      <i class="devicon-typescript-plain" @click="redirect(['Typescript'])" />
-      <i class="devicon-python-plain" @click="redirect(['Python'])" />
-      <i class="devicon-dart-plain" @click="redirect(['Flutter/Dart'])" />
-      <i class="devicon-java-plain" @click="redirect(['Processing/Java'])" />
+      <div class="skill" @click="redirect(['Javascript'])">
+        <i class="devicon-javascript-plain colored" />
+        <div class="skillText">Javascript</div>
+      </div>
+      <div class="skill" @click="redirect(['Typescript'])">
+        <i class="devicon-typescript-plain colored" />
+        <div class="skillText">Typescript</div>
+      </div>
+      <div class="skill" @click="redirect(['Python'])">
+        <i class="devicon-python-plain colored"/>
+        <div class="skillText">Python</div>
+      </div>
+      <div class="skill" @click="redirect(['Flutter/Dart'])">
+        <i class="devicon-dart-plain colored"/>
+        <div class="skillText">Flutter, Dart</div>
+      </div>
+      <div class="skill" @click="redirect(['Processing/Java'])">
+        <i class="devicon-java-plain colored"/>
+        <div class="skillText">Java, Processing</div>
+      </div>
     </div>
-    <br />
     <div class="row">
-      <i class="devicon-nodejs-plain" @click="redirect(['NodeJS'])" />
-      <i class="devicon-vuejs-plain" @click="redirect(['Vue'])" />
-      <i
-        class="devicon-react-plain"
-        @click="redirect(['React', 'React Native'])"
-      />
-      <i class="devicon-flask-plain" @click="redirect(['Flask'])" />
-      <i class="devicon-django-plain" @click="redirect(['Django'])" />
+      <div class="skill" @click="redirect(['NodeJS'])">
+        <i class="devicon-nodejs-plain colored"/>
+        <div class="skillText">NodeJS</div>
+      </div>
+      <div class="skill" @click="redirect(['Vue'])">
+        <i class="devicon-vuejs-plain colored"/>
+        <div class="skillText">Vue</div>
+      </div>
+      <div class="skill" @click="redirect(['React', 'React Native'])">
+        <i class="devicon-react-plain colored"/>
+        <div class="skillText">React, React Native</div>
+      </div>
+      <div class="skill" @click="redirect(['Flask'])">
+        <i class="devicon-flask-plain colored"/>
+        <div class="skillText">Flask</div>
+      </div>
+      <div class="skill" @click="redirect(['Django'])">
+        <i class="devicon-django-plain colored"/>
+        <div class="skillText">Django</div>
+      </div>
     </div>
-    <br />
     <div class="row">
-      <i class="devicon-mongodb-plain" @click="redirect(['MongoDB'])" />
-      <i class="devicon-mysql-plain" @click="redirect(['SQL'])" />
-      <i
-        class="devicon-amazonwebservices-original"
-        @click="redirect(['AWS'])"
-      />
-      <!-- TODO new projects, manga rec and chess-->
+      <div class="skill" @click="redirect(['MongoDB'])">
+        <i class="devicon-mongodb-plain colored"/>
+        <div class="skillText">MongoDB</div>
+      </div>
+      <div class="skill" @click="redirect(['SQL'])">
+        <i class="devicon-mysql-plain colored"/>
+        <div class="skillText">SQL</div>
+      </div>
+      <div class="skill" @click="redirect(['AWS'])">
+        <i class="devicon-amazonwebservices-original colored"/>
+        <div class="skillText">AWS</div>
+      </div>
+      <!-- TODO new projects, chess-->
       <!-- TODO favicon-->
-      <i class="devicon-firebase-plain" @click="redirect(['Firebase'])" />
+      <div class="skill" @click="redirect(['Firebase'])">
+        <i class="devicon-firebase-plain colored"/>
+        <div class="skillText">Firebase</div>
+      </div>
     </div>
     <Projects />
   </div>

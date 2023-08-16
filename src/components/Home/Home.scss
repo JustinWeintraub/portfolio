@@ -2,18 +2,19 @@
 
 h1 {
   font-size: 40px;
+  font-weight: bold;
+  padding-top:0;
+  margin-top:0;
 }
 h3 {
   font-size: 25px;
+  font-weight: lighter;
 }
 ul {
   list-style-type: none;
   padding: 0;
 }
 
-i {
-  cursor: pointer;
-}
 br {
   content: "";
   display: block;
@@ -24,33 +25,57 @@ br {
   width: 99vw;
   height: auto;
   display: flex;
-  justify-content: center;
-  margin-top:10px;
-  padding-top: 10vw;
+  // justify-content: center;
+  flex-direction: row;
+  margin-top: 150px;
+  margin-bottom: 50px;
+  justify-content: space-evenly;
+  gap: 80px;
 }
 
 .homeText {
   // width: 50%;
   text-align: left;
-  width: 60vw;
+  // width: 60vw;
+  flex: 3;
+  margin-right: 10%;
 }
+.homeText hr {
+  width: 30%;
+  border: 2px solid #EBC113;
+  margin-left:0;
 
+}
+.homeImageContainer{
+  flex: 2;
+  display: flex;
+  justify-content:flex-end;
+}
 .homeImage {
-  border-radius: 50%;
-  height: 90%;
-  width:auto;
-  max-width: 30%;
-  margin-top:auto;
-  margin-bottom:auto;
+  // border-radius: 50%;
+  height: 350px;
+  width: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  // margin-left: auto;
+  // height: 90%;
+  // width:auto;
+  // max-width: 30%;
+  // margin-top:auto;
+  // margin-bottom:auto;
+  // padding-left: auto;
 }
 .divider{
   width: 5vw;
 }
 .knowledgeContainer {
   background-color: $tertiary;
+  color: $primary;
+  padding-top:50px;
 }
 .tab {
   background-color: $tertiary;
+  color: $primary
 }
 // .backgroundImage {
 //   position: absolute;
@@ -59,12 +84,42 @@ br {
 //   height: auto;
 //   z-index: -1;
 // }
+
+.skills {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-column-gap: 16px;
+  grid-row-gap: 8px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  gap: 60px;
+}
+.skill {
+  cursor: pointer;
+  background-color: white;
+  padding: 5px;
+  font-size: 80px;
+  width: 90px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+}
+.skillText{
+  border-top: 2px solid #EBC113;
+  font-size:16px;;
+  margin-top:5px; 
+  padding-top: 5px;
+  color: $tertiary;
+}
 .row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-size: 5vw;
   padding: 1vw;
+  margin-top:25px;
+  margin-bottom:25px;
 }
 @media only screen and (max-width: 600px) {
   h1 {
@@ -75,16 +130,10 @@ br {
   }
 }
 
-@media only screen and (max-width: 500px) {
-  h1 {
-    font-size: 15px;
-  }
-  .backgroundImage {
-    width: 115vw;
-  }
-}
-
 @media only screen and (max-width: 1500px) {
+  .homeImage {
+    height: 300px;
+  }
   h1 {
     font-size: 30px;
   }
@@ -92,22 +141,42 @@ br {
     font-size: 16px;
   }
 }
+@media only screen and (max-width: 1000px) {
+  .homeContainer{
+    gap: 40px;
+  }
+  .homeImage {
+    height: 250px;
+  }
+  .skill {
+    font-size: 50px;
+  }
+}
 
 @media only screen and (max-width: 750px) {
+  .homeContainer{
+    gap:20px;
+  }
+  .homeImageContainer{
+    flex: 1;
+  }
+  .homeImage {
+    height: 200px;
+  }
+  // .homeText hr {
+  //   // width: 200px;
+  // }
   h1 {
     font-size: 20px;
   }
   h3 {
     font-size: 12px;
   }
-}
-
-@media only screen and (max-width: 375px) {
-  h1 {
-    font-size: 10px;
+  .skill {
+    font-size:35px;
   }
-  h3 {
-    font-size: 6px;
+  .skillText {
+    font-size: 12px;
   }
 }
 

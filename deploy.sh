@@ -23,3 +23,4 @@ git push origin master --force
 
 cd -
 
+# TODO add to head google analytics
