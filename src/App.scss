@@ -1,11 +1,12 @@
 $black: #333;
 $strongBlack: black;
 $white: #dddd;
-$strongWhite: #eeee;
-$primary: #e7c9a9; //#0b3c5d;
-$secondary: #6F4E37;//#1d2731;
-$tertiary: #E8D4A4;//#328cc1;
-$quaternary:	#6F4E37;//#d9b310;
+$strongWhite: #ffff;//#eeee;
+$primary: #fffffff9;//#e7c9a9; //#0b3c5d;
+$secondary: #111;//#6F4E37;//#1d2731;
+$tertiary: #2e312e;//#E8D4A4;//#328cc1;
+$quaternary:	#EBC113;//#6F4E37;//#d9b310;
+$quinary: #F0F0F0;
 
 html {
   scroll-behavior: smooth;
@@ -19,6 +20,9 @@ html {
   color: $black;
   overflow-x: hidden;
   position: relative;
+  max-width: 2500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #skills, #projects {
   scroll-margin-top: 12vw;
@@ -41,16 +45,17 @@ body {
   margin-bottom: 1vh;
 }
 .tab {
-  width:15%;
+  width:150px;
   margin-left: 2vw;
   margin-bottom: 0;
   border-radius: 15px 15px 0px 0px;
   padding: 1vw 1vw;
-  font-size:2.5vw;
+  font-size: 30px;
 }
 
 @media only screen and (max-width: 750px) {
   .tab{
-    font-size: 3.25vw;
+    font-size: 20px;
+    width: 100px;
   }
 }

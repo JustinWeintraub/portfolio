@@ -1,6 +1,6 @@
-import Projects from "../Projects/Projects.vue";
+import Projects from "../Projects/PortfolioProjects.vue";
 export default {
-  name: "Home",
+  name: "portfolio-home",
   components: {
     Projects,
   },

@@ -1,11 +1,11 @@
-import Popup from "../Popup/Popup.vue";
+import Popup from "../Popup/PortfolioPopup.vue";
 import { projects, topics } from "../../js/projectList";
 import Multiselect from "vue-multiselect";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { mapState } from "vuex";
 export default {
-  name: "Projects",
+  name: "portfolio-projects",
   components: {
     Popup,
     Multiselect,

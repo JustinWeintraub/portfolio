@@ -1,24 +1,14 @@
 @import "@/app.scss";
 
-h1 {
-  margin-top: 2.5vw;
-}
-@media screen and (max-width: 700px) {
-  h1 {
-    font-size: 4vw;
-  }
-}
-h2 {
-  margin-bottom: 2vh;
-}
+
 
 .projectContainer {
-  background-color: $primary;
+  background-color: $quinary;
 }
 
 .multiselect {
   width: 30%;
-  color: black;
+  color: $secondary;
   text-align: center;
   text-align-last: center;
   margin-left: auto;
@@ -27,18 +17,12 @@ h2 {
 }
 
 .label {
-  border-top: 2px solid black;
-}
-img {
-  max-width: 95%;
-  max-height: 350px;
-}
-.imageContainer {
-  // height: clamp(200px, 50vw, 460px);
-  height: 360px;
+  border: 2px solid $quaternary;
+  margin-top: -7px;
+  margin-bottom: 0px;
 }
 .grid-container {
-  width: 99%;
+  width: 98%;
   height: auto;
   display: grid;
   grid-gap: 10px;
@@ -49,64 +33,102 @@ img {
   grid-auto-columns: 20%;*/
 }
 .unit {
-  width: 31vw;
+  width: 500px;
   margin: auto;
-  padding-top: 0.00125vw;
-  margin-bottom: 2vw;
-  background-color: $tertiary; /*rgb(163, 132, 94);*/
+  background-color: $primary; /*rgb(163, 132, 94);*/
   /*border: 2px solid black;*/
   -webkit-box-shadow: 0px 15px 18px -1px $secondary;
   -moz-box-shadow: 0px 15px 18px -1px $secondary;
   box-shadow: 0px 15px 18px -1px $secondary;
-  border-top-left-radius: 35px;
-  border-top-right-radius: 35px;
   cursor: pointer;
+  img {
+    height: 250px;
+    width: 500px;
+    // object-fit: cover;
+  }
 }
 .unit:hover {
-  width: 32vw;
   -webkit-box-shadow: 0px 13px 18px 4px $secondary;
   -moz-box-shadow: 0px 13px 18px 4px $secondary;
   box-shadow: 0px 13px 18px 4px $secondary;
-  img {
-    max-height: 370px;
-  }
 }
 
-.dot {
-  height: 2vw;
-  width: 2vw;
-  background-color: #0b3c5d;
-  border-radius: 50%;
-  display: inline-block;
-  margin: -2vw;
-  box-shadow: 0 0 0 0.375vw $quaternary;
-  opacity: 1;
+.unitText {
+  font-size: 30px;
+  color: $secondary;
+  vertical-align: text-top;
+  margin-block-start: 0;
+  font-weight: lighter;
+
 }
 
+.break {
+  padding-top:50px;
+}
+.multiselect::v-deep .multiselect__placeholder {
+    color: $secondary;
+}
 .tab {
-  background-color: $primary;
+  background-color: $quinary;
+  color: $secondary;
 }
 
 .tabBackground {
   background-color: $tertiary;
 }
 
+@media only screen and (max-width: 1100px) {
+  .unitText {
+    font-size: 25px;
+  }
+  .unit {
+    width: 400px;
+    img {
+      width: 400px;
+      height: 200px;
+    }
+  }
+}
+
 @media only screen and (max-width: 850px) {
   image {
     max-height: auto;
   }
-  .imageContainer {
-    height: 260px;
-  }
-  img {
-    max-height: 250px;
-  }
-  .unit:hover {
-    img {
-      max-height: 260px;
-    }
+  .grid-container {
+    width: 96%;
   }
   .multiselect {
     width: 60%;
+  }
+
+  .unitText {
+    font-size: 23px;
+  }
+  .unit {
+    width: 150px;
+    img {
+      width: 150px;
+      height: 100px;
+    }
+  }
+  
+}
+
+@media only screen and (max-width: 750px) {
+  .unitText {
+    font-size:18px;
+  }
+  .grid-container {
+    padding-left: 2px;
+  }
+  .unit {
+    -webkit-box-shadow: 0px 5px 18px -1px $secondary;
+  -moz-box-shadow: 0px 5px 18px -1px $secondary;
+  box-shadow: 0px 5px 18px -1px $secondary;
+  }
+  .unit:hover {
+    -webkit-box-shadow: 0px 7px 18px 2px $secondary;
+    -moz-box-shadow: 0px 7px 18px 2px $secondary;
+    box-shadow: 0px 7px 18px 2px $secondary;
   }
 }

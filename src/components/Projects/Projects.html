@@ -3,7 +3,7 @@
     <h1 class="tab">Projects</h1>
   </div>
   <!-- <h1 :style="{'font-size':'3vw'}">Projects</h1> -->
-  <br/>
+  <div class="break"></div>
   <multiselect
     :value="selectedTopics"
     @input="updateTopics"
@@ -12,6 +12,7 @@
     :showLabels="false"
     placeholder="Filter projects"
     open-direction="bottom"
+    class="multiselect"
   ></multiselect>
 
   <div class="grid-container">
@@ -21,17 +22,12 @@
       v-on:click="popupProject(project)"
     >
       <div class="unit">
-        <div class="dot" />
-
-        <h1 v-bind:class="{ 'margin-bottom': '50vw' }" :style="{'font-size':'3vw'}">
+        <img :src="project.img" alt />
+        <!-- <br /> -->
+        <hr class="label" />
+        <h1 class="unitText">
           {{ project.title }}
         </h1>
-        <div class="label" />
-        <br />
-        <div class="imageContainer">
-          <img :src="project.img" alt />
-        </div>
-        <br />
       </div>
     </div>
   </div>

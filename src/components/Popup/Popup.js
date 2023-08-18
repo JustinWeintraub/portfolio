@@ -12,8 +12,17 @@ export default {
   },
   mounted: function() {
     this.topics = this.topics.sort();
+    document.addEventListener('keyup', this.checkEscape);
+  },
+  beforeDestroy() { 
+    document.removeEventListener('keyup', this.changeName); 
   },
   methods: {
+    checkEscape(evt){
+      if (evt.key === "Escape") {
+          this.onRemove();
+      }
+    },
     urlify(text) {
       var urlRegex = /(https?:\/\/[^\s]+)/g;
       let url = text.match(urlRegex);
