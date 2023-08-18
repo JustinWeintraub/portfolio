@@ -1,24 +1,23 @@
 @import "@/app.scss";
 
-img {
-  width: 100%;
-}
 h2 {
-  font-size: clamp(15px, 4.25vw, 75px);
+  font-size: clamp(30px, 4.25vw, 75px);
   margin: 0.2em;
 }
 .collapsible{
-  font-size: clamp(15px, 2.25vw, 30px);
+  font-size: clamp(20px, 2.25vw, 30px);
 }
 h3,h4 {
-  font-size: clamp(10px, 1.25vw, 30px);
+  font-size: clamp(16px, 1.25vw, 30px);
 }
 
 h4,
 h2,
 h3 {
-  margin-top: 0.25vh;
-  margin-bottom: 0vh;
+  margin-bottom: 10px;
+}
+.topicContainer {
+  margin-top: 10px;
 }
 code {
   text-align: left;
@@ -47,7 +46,7 @@ br {
 
 .popup {
   overflow: auto;
-  background-color: $tertiary;
+  background-color: $primary;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -59,7 +58,7 @@ br {
   // overflow-wrap: break-word;
   box-sizing: border-box;
   border: 3px solid black;
-  color: #333;
+  color: $tertiary;
   padding: 1%;
   display: block;
 }
@@ -67,9 +66,9 @@ br {
   flex: 1;
 }
 .imageConstrained {
-  width:auto;
-  max-width:60%;
-  max-height: 400px;
+  height: 500px;
+  width: 70vw;
+  object-fit: scale-down;
 }
 
 .codeDescriptions {
@@ -89,27 +88,33 @@ br {
   cursor: pointer;
 }
 
+.row {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .close {
-  position: fixed;
-  left:92.5%;
-  top:2.5%;
+  flex: 1;
   cursor: pointer;
-  color: $black;
+  color: $secondary;
   z-index:4;
 }
 
 .title {
+  flex: 100;
   margin-left: auto;
   margin-right: auto;
   text-decoration-line: underline;  
   color: $strongBlack;
+  padding-left: 5%;
 }
 .rightSection {
   margin-top: 5vw;
   padding-left: 10px;
 }
 .collapsible {
-  background-color: $secondary;
+  background-color: $tertiary;
   color: white;
   cursor: pointer;
   padding: 18px;
@@ -124,6 +129,15 @@ br {
 .constrainedText {
   width: 60vw;
   margin: auto
+}
+
+@media only screen and (max-width: 850px) {
+  .imageConstrained {
+    height: 300px;
+  }
+  .title {
+    padding-left: 7%;
+  }
 }
 /*::-webkit-scrollbar {
   -webkit-appearance: none;

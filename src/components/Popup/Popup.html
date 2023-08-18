@@ -1,10 +1,12 @@
-<div>
-  <!-- <h2 class="close" @click="onRemove">&times;</h2> -->
+<div @keydown.esc="onRemove">
   <div class="overlay" @click="onRemove" />
   <transition name="slide">
     <div class="popup" v-bind:key="title">
       <div>
-        <h2 class="title">{{ title }}</h2>
+        <div class="row">
+          <h2 class="title">{{ title }}</h2>
+          <h2 class="close" @click="onRemove">&times;</h2>
+        </div>
         <a target="_blank" :href="img">
           <img class="imageConstrained" :src="img" />
         </a>
@@ -12,6 +14,7 @@
         <br />
         <h3 class="constrainedText" v-for="line in text" v-bind:key="line" v-html="urlify(line)" />
       </div>
+      <div class="topicContainer">
         <div v-for="(codePart, index) in code" :key="'codePart' + index">
           <button
             type="button"
@@ -53,5 +56,6 @@
           <h4 v-for="topic in topics" v-bind:key="topic" v-html="topic" />
         </div>
     </div>
+  </div>
   </transition>
 </div>

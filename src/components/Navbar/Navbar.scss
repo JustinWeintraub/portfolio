@@ -32,6 +32,9 @@ img {
   flex-direction: row;
   justify-content: space-evenly;
   align-items:center;
+  max-width: 2500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 // .row {
 //   display: flex;
@@ -60,6 +63,7 @@ img {
 @media only screen and (max-width: 1001px) {
   .name {
     margin-left: 15px;
+    flex: 1;
   }
   .icons {
     margin-right: 15px;
